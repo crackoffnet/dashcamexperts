@@ -76,7 +76,7 @@ export const compactServices: ServiceItem[] = [
     icon: "front",
     title: "Front Dash Cam Install",
     shortLabel: "Cigarette lighter socket connection",
-    startingAt: "$149",
+    startingAt: "Starting at $149",
     description: "Front dash cam installation connected through the cigarette lighter socket with clean hidden wire routing.",
     benefits: []
   },
@@ -84,7 +84,7 @@ export const compactServices: ServiceItem[] = [
     icon: "power",
     title: "Front + Rear Install + Hardwire + Parking Mode",
     shortLabel: "Hardwire kit install",
-    startingAt: "$200",
+    startingAt: "Starting at $200",
     description: "Front and rear dash cam installation with hardwire kit setup and parking mode configuration for compatible cameras.",
     benefits: []
   }
