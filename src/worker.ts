@@ -1,5 +1,5 @@
 const securityHeaders = {
-  "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "X-Content-Type-Options": "nosniff",
   "X-Frame-Options": "DENY",
   "Referrer-Policy": "strict-origin-when-cross-origin",
@@ -13,7 +13,7 @@ const securityHeaders = {
     "connect-src 'self'; " +
     "frame-ancestors 'none'; " +
     "base-uri 'self'; " +
-    "form-action 'self' https://wa.me;"
+    "form-action 'self' https://wa.me mailto:;"
 };
 
 export default {

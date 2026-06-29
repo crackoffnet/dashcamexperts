@@ -1,6 +1,6 @@
 # Dashcam Experts Website
 
-Premium landing website for Dashcam Experts, a Los Angeles dash cam installation business. The app is built with Vite, React, TypeScript, and Tailwind CSS using a static-friendly setup that is ready for local development and later Cloudflare Pages deployment.
+Premium landing website for Dashcam Experts, a Los Angeles dash cam installation business. The app is built with Vite, React, TypeScript, and Tailwind CSS and is deployed with Cloudflare Workers Static Assets.
 
 Included routes:
 
@@ -11,7 +11,7 @@ Included routes:
 - `/privacy-policy`
 - `/terms-and-conditions`
 - `/refund-cancellation-policy`
-- `/cookie-policy` 
+- `/cookie-policy`
 - `/disclaimer`
 
 ## Local WSL2
@@ -31,13 +31,23 @@ Local URL:
 http://localhost:5173
 ```
 
-## Cloudflare Pages
+## Cloudflare Worker Static Assets Deployment
+
+Run these commands:
+
+```bash
+npm run build
+npx wrangler deploy
+```
+
+## Cloudflare Build Settings
 
 Use these settings:
 
 ```text
 Build command: npm run build
-Output directory: dist
+Deploy command: npx wrangler deploy
+Production branch: main
 ```
 
 ## Domain setup
@@ -48,8 +58,17 @@ Primary domain:
 www.dashcamexperts.xyz
 ```
 
-Redirect:
+Root-to-www redirect:
 
 ```text
 dashcamexperts.xyz -> www.dashcamexperts.xyz
+```
+
+This redirect should be handled with Cloudflare Redirect Rules.
+
+DNS:
+
+```text
+www.dashcamexperts.xyz should be connected to the Worker custom domain.
+dashcamexperts.xyz should have a proxied DNS record for redirect handling.
 ```
