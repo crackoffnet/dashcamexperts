@@ -32,7 +32,7 @@ const quoteDefaults = {
   vehicleMake: "",
   vehicleModel: "",
   dashCamModel: "",
-  installationType: "Front Dash Cam Install - Cigarette Lighter Socket - Starting at $149",
+  installationType: "Front Dash Cam Install - Cigarette Lighter Socket - Starting at $160",
   hasDashcam: "Yes",
   preferredInstallation: "Mobile installation",
   preferredDate: "",
@@ -839,8 +839,8 @@ function QuoteModal({
           </Field>
           <Field label="Installation Type">
             <select className="input-field" value={form.installationType} onChange={onChange("installationType")}>
-              <option>Front Dash Cam Install — Cigarette Lighter Socket — Starting at $149</option>
-              <option>Front + Rear Install + Hardwire + Parking Mode — Starting at $200</option>
+              <option>Front Dash Cam Install - Cigarette Lighter Socket - Starting at $160</option>
+              <option>Front + Rear Install + Hardwire + Parking Mode - Starting at $250</option>
               <option>Not Sure Yet</option>
             </select>
           </Field>
