@@ -45,6 +45,7 @@ export type ServiceIconKind =
 export type ServiceItem = {
   icon: ServiceIconKind;
   title: string;
+  shortLabel?: string;
   description: string;
   startingAt: string;
   benefits: string[];
@@ -68,44 +69,18 @@ export const compactServices: ServiceItem[] = [
   {
     icon: "front",
     title: "Front Dash Cam Install",
-    startingAt: "Starting at $99",
-    description: "Clean front camera installation with hidden wire routing.",
-    benefits: ["Balanced windshield fit", "Neat upper trim routing", "Built for everyday protection"]
-  },
-  {
-    icon: "dual",
-    title: "Front + Rear Install",
-    startingAt: "Starting at $189",
-    description: "Front and rear camera setup with clean cable routing through the vehicle.",
-    benefits: ["Full driving coverage", "Discreet rear wire path", "Refined overall finish"]
+    shortLabel: "Cigarette lighter socket connection",
+    startingAt: "$149",
+    description: "Front dash cam installation connected through the cigarette lighter socket with clean hidden wire routing.",
+    benefits: []
   },
   {
     icon: "power",
-    title: "Hardwire + Parking Mode",
-    startingAt: "Starting at $149",
-    description: "Hardwire kit installation and parking mode configuration for compatible dash cams.",
-    benefits: ["Cleaner power source", "Prepared for parked recording", "Better feature support"]
-  },
-  {
-    icon: "route",
-    title: "Hidden Wire Cleanup",
-    startingAt: "Starting at $79",
-    description: "Clean up visible wires and improve the factory-style look of an existing setup.",
-    benefits: ["No visible cable clutter", "Cleaner interior appearance", "Sharper final presentation"]
-  },
-  {
-    icon: "mobile",
-    title: "Mobile Installation",
-    startingAt: "Starting at $49 travel fee",
-    description: "Convenient installation at your location in LA & nearby areas.",
-    benefits: ["Convenient scheduling", "Straightforward on-site service", "Premium mobile support"]
-  },
-  {
-    icon: "upgrade",
-    title: "Camera Replacement / Upgrade",
-    startingAt: "Starting at $89",
-    description: "Replace or upgrade an existing dash cam using a cleaner installation layout.",
-    benefits: ["Replace aging equipment", "Upgrade cleanly", "Compatibility review first"]
+    title: "Front + Rear Install + Hardwire + Parking Mode",
+    shortLabel: "Hardwire kit install",
+    startingAt: "$200",
+    description: "Front and rear dash cam installation with hardwire kit setup and parking mode configuration for compatible cameras.",
+    benefits: []
   }
 ];
 

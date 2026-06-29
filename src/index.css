@@ -6,6 +6,12 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body,
+#root {
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   min-width: 320px;
@@ -23,13 +29,21 @@ a {
   box-sizing: border-box;
 }
 
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
 @layer components {
   .button-primary {
-    @apply inline-flex items-center justify-center rounded-full border border-gold-400/60 bg-gold-500 px-6 py-3 text-sm font-semibold text-black transition duration-300 hover:border-gold-300 hover:bg-gold-400;
+    @apply inline-flex min-h-11 items-center justify-center rounded-full border border-gold-400/60 bg-gold-500 px-6 py-3 text-sm font-semibold text-black transition duration-300 hover:border-gold-300 hover:bg-gold-400;
   }
 
   .button-secondary {
-    @apply inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:border-gold-400/45 hover:text-gold-300;
+    @apply inline-flex min-h-11 items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:border-gold-400/45 hover:text-gold-300;
   }
 
   .glass-card {
@@ -37,6 +51,6 @@ a {
   }
 
   .input-field {
-    @apply rounded-2xl border border-white/10 bg-black/35 px-4 py-3 text-white outline-none transition placeholder:text-white/30 focus:border-gold-400/45;
+    @apply w-full rounded-2xl border border-white/10 bg-black/35 px-4 py-3 text-base text-white outline-none transition placeholder:text-white/30 focus:border-gold-400/45 sm:text-sm;
   }
 }

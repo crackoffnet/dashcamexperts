@@ -28,17 +28,17 @@ export function HomePage() {
       description="Premium dash cam installation in LA & nearby areas. Hidden wires, front and rear camera installs, hardwire setup, parking mode, and mobile installation."
       keywords={sharedKeywords}
     >
-      <section className="mx-auto grid max-w-7xl gap-6 px-5 pb-8 pt-10 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:pb-10 lg:pt-14">
+      <section className="mx-auto grid max-w-7xl gap-5 px-5 pb-7 pt-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-6 lg:px-8 lg:pb-10 lg:pt-14">
         <div className="max-w-3xl">
-          <p className="mb-3 text-sm uppercase tracking-[0.4em] text-gold-300/90">Los Angeles Premium Install Service</p>
-          <h1 className="text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
+          <p className="mb-3 text-xs uppercase tracking-[0.3em] text-gold-300/90 sm:text-sm sm:tracking-[0.4em]">Los Angeles Premium Install Service</p>
+          <h1 className="text-[2rem] font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
             Dash Cam Installation in Los Angeles
           </h1>
-          <p className="mt-4 max-w-2xl text-sm leading-7 text-white/72 sm:text-lg">
+          <p className="mt-4 max-w-2xl text-sm leading-6 text-white/72 sm:text-lg sm:leading-7">
             Clean factory-style installation, discreet wire routing, and premium fitment for drivers who want protection without visual clutter.
           </p>
           <div className="mt-5">
-            <QuoteButton className="button-primary">Get Quote</QuoteButton>
+            <QuoteButton className="button-primary w-full sm:w-auto">Get Quote</QuoteButton>
           </div>
         </div>
 
@@ -47,7 +47,7 @@ export function HomePage() {
 
       <TrustBar />
 
-      <section className="mx-auto max-w-7xl px-5 py-9 lg:px-8">
+      <section className="mx-auto max-w-7xl px-5 py-8 lg:px-8 lg:py-9">
         <SectionHeading
           eyebrow="Services + Pricing"
           title="Installation options with clear starting labor rates"
@@ -56,7 +56,7 @@ export function HomePage() {
         <ServicesGrid items={compactServices} />
         <PricingDisclaimer />
         <div className="mt-6">
-          <QuoteButton className="button-primary">Get Quote</QuoteButton>
+          <QuoteButton className="button-primary w-full sm:w-auto">Get Quote</QuoteButton>
         </div>
       </section>
 
@@ -64,7 +64,7 @@ export function HomePage() {
       <WhyUsSection />
       <ProcessSection />
 
-      <section className="mx-auto max-w-7xl px-5 py-9 lg:px-8">
+      <section className="mx-auto max-w-7xl px-5 py-8 lg:px-8 lg:py-9">
         <SectionHeading
           eyebrow="FAQ"
           title="Quick answers before you book"
@@ -89,9 +89,9 @@ export function ServicesPage() {
         eyebrow="Services"
         title="Professional installation services with straightforward starting rates"
         description="Starting labor rates are shown below. Final pricing depends on the vehicle, camera model, installation type, and wiring complexity."
-        actions={<QuoteButton className="button-primary">Get Quote</QuoteButton>}
+        actions={<QuoteButton className="button-primary w-full sm:w-auto">Get Quote</QuoteButton>}
       />
-      <section className="mx-auto max-w-7xl px-5 pb-16 lg:px-8">
+      <section className="mx-auto max-w-7xl px-5 pb-12 lg:px-8 lg:pb-16">
         <ServicesGrid items={fullServices} showBenefits />
         <PricingDisclaimer />
       </section>
@@ -110,9 +110,9 @@ export function FaqPage() {
         eyebrow="FAQ"
         title="Questions drivers ask before booking installation"
         description="These answers cover routing, compatibility, parking mode support, and what to expect before the appointment."
-        actions={<QuoteButton className="button-primary">Get Quote</QuoteButton>}
+        actions={<QuoteButton className="button-primary w-full sm:w-auto">Get Quote</QuoteButton>}
       />
-      <section className="mx-auto max-w-7xl px-5 pb-16 lg:px-8">
+      <section className="mx-auto max-w-7xl px-5 pb-12 lg:px-8 lg:pb-16">
         <FaqList />
       </section>
     </PageShell>
@@ -130,9 +130,9 @@ export function ContactPage() {
         eyebrow="Contact"
         title="Reach out for a dash cam installation quote"
         description="Use the quote form for the fastest path, or contact us by email if you prefer to start there."
-        actions={<QuoteButton className="button-primary">Get Quote</QuoteButton>}
+        actions={<QuoteButton className="button-primary w-full sm:w-auto">Get Quote</QuoteButton>}
       />
-      <section className="mx-auto max-w-7xl px-5 pb-16 lg:px-8">
+      <section className="mx-auto max-w-7xl px-5 pb-12 lg:px-8 lg:pb-16">
         <ContactCard />
       </section>
     </PageShell>
@@ -157,7 +157,7 @@ function PolicyPage({ policyKey }: PolicyPageProps) {
         title={policy.title}
         description={`${policy.description} Website: ${site.websiteLabel}. Email: ${site.emailDisplay}.`}
       />
-      <section className="mx-auto max-w-5xl px-5 pb-16 lg:px-8">
+      <section className="mx-auto max-w-5xl px-5 pb-12 lg:px-8 lg:pb-16">
         <LegalSectionList sections={policy.sections} />
         <LegalContactNote />
       </section>

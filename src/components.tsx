@@ -30,7 +30,7 @@ const quoteDefaults = {
   vehicleMake: "",
   vehicleModel: "",
   dashCamModel: "",
-  installationType: "Front Camera Only",
+  installationType: "Front Dash Cam Install — Cigarette Lighter Socket — $149",
   hasDashcam: "Yes",
   preferredInstallation: "Mobile installation",
   preferredDate: "",
@@ -155,6 +155,7 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { openQuote } = useQuoteModal();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -174,12 +175,12 @@ export function Header() {
         scrolled ? "border-b border-white/10 bg-black/85 backdrop-blur-xl" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
-        <Link to="/" className="flex items-center gap-3 text-sm uppercase tracking-[0.35em] text-gold-300">
-          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-gold-500/50 bg-white/5 text-lg">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 lg:px-8 lg:py-4">
+        <Link to="/" className="min-w-0 flex items-center gap-2.5 text-sm uppercase tracking-[0.24em] text-gold-300 sm:gap-3 sm:tracking-[0.35em]">
+          <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gold-500/50 bg-white/5 text-base sm:h-10 sm:w-10 sm:text-lg">
             DE
           </span>
-          <span className="text-xs sm:text-sm">{site.name}</span>
+          <span className="truncate text-[11px] sm:text-sm">{site.name}</span>
         </Link>
 
         <nav className="hidden items-center gap-8 text-sm text-white/80 lg:flex">
@@ -200,36 +201,64 @@ export function Header() {
           <QuoteButton className="button-primary">Get Quote</QuoteButton>
         </div>
 
-        <button
-          type="button"
-          className="inline-flex rounded-full border border-white/15 p-3 text-white lg:hidden"
-          aria-label="Toggle menu"
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          <span className="flex h-4 w-4 flex-col justify-between">
-            <span className="h-0.5 rounded-full bg-current" />
-            <span className="h-0.5 rounded-full bg-current" />
-            <span className="h-0.5 rounded-full bg-current" />
-          </span>
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <button
+            type="button"
+            className="inline-flex min-h-11 items-center justify-center rounded-full border border-gold-400/30 bg-gold-500/10 px-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-300 transition hover:border-gold-300/50 hover:text-gold-200 sm:px-4"
+            onClick={() => openQuote()}
+          >
+            Get Quote
+          </button>
+          <button
+            type="button"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-white/15 px-3 text-white"
+            aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <span className="flex h-4 w-4 flex-col justify-between">
+              <span className="h-0.5 rounded-full bg-current" />
+              <span className="h-0.5 rounded-full bg-current" />
+              <span className="h-0.5 rounded-full bg-current" />
+            </span>
+          </button>
+        </div>
       </div>
 
       {menuOpen ? (
-        <div className="border-t border-white/10 bg-black/95 px-5 py-4 lg:hidden">
+        <div className="border-t border-white/10 bg-black/95 px-4 py-4 lg:hidden">
           <div className="flex flex-col gap-4">
             {navLinks.map((item) =>
               item.href.includes("#") ? (
-                <a key={item.href} href={item.href} className="text-sm text-white/85 transition hover:text-gold-300" onClick={() => setMenuOpen(false)}>
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="rounded-2xl px-1 py-2 text-sm text-white/85 transition hover:text-gold-300"
+                  onClick={() => setMenuOpen(false)}
+                >
                   {item.label}
                 </a>
               ) : (
-                <Link key={item.href} to={item.href} className="text-sm text-white/85 transition hover:text-gold-300" onClick={() => setMenuOpen(false)}>
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className="rounded-2xl px-1 py-2 text-sm text-white/85 transition hover:text-gold-300"
+                  onClick={() => setMenuOpen(false)}
+                >
                   {item.label}
                 </Link>
               )
             )}
-            <QuoteButton className="button-primary text-center">Get Quote</QuoteButton>
+            <button
+              type="button"
+              className="button-primary w-full text-center"
+              onClick={() => {
+                setMenuOpen(false);
+                openQuote();
+              }}
+            >
+              Get Quote
+            </button>
           </div>
         </div>
       ) : null}
@@ -239,19 +268,19 @@ export function Header() {
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/8 px-5 py-8 lg:px-8">
-      <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_auto]">
+    <footer className="border-t border-white/8 px-5 py-7 lg:px-8 lg:py-8">
+      <div className="mx-auto grid max-w-7xl gap-7 lg:grid-cols-[1fr_auto]">
         <div>
-          <p className="uppercase tracking-[0.3em] text-gold-300">{site.name}</p>
+          <p className="text-sm uppercase tracking-[0.26em] text-gold-300 sm:tracking-[0.3em]">{site.name}</p>
           <p className="mt-2 text-sm text-white/60">Professional dash cam installation</p>
           <p className="mt-1 text-sm text-white/60">{site.serviceArea}</p>
-          <p className="mt-2 text-sm text-white/60">
+          <p className="mt-2 break-words text-sm text-white/60">
             Email:{" "}
             <a className="transition hover:text-gold-300" href={site.emailHref}>
               {site.emailDisplay}
             </a>
           </p>
-          <p className="mt-2 text-sm text-white/60">
+          <p className="mt-2 break-words text-sm text-white/60">
             <a className="transition hover:text-gold-300" href={site.websiteUrl}>
               {site.websiteLabel}
             </a>
@@ -264,9 +293,9 @@ export function Footer() {
             .
           </p>
         </div>
-        <div className="grid gap-3 text-sm text-white/70 sm:grid-cols-2">
+        <div className="grid gap-x-5 gap-y-3 text-sm text-white/70 sm:grid-cols-2">
           {footerLinks.map((link) => (
-            <Link key={link.href} to={link.href} className="transition hover:text-gold-300">
+            <Link key={link.href} to={link.href} className="break-words transition hover:text-gold-300">
               {link.label}
             </Link>
           ))}
@@ -287,9 +316,9 @@ export function SectionHeading({
 }) {
   return (
     <div className="max-w-3xl">
-      <p className="text-sm uppercase tracking-[0.35em] text-gold-300">{eyebrow}</p>
+      <p className="text-xs uppercase tracking-[0.3em] text-gold-300 sm:text-sm sm:tracking-[0.35em]">{eyebrow}</p>
       <h2 className="mt-3 text-2xl font-semibold text-white sm:text-3xl">{title}</h2>
-      <p className="mt-3 text-sm leading-7 text-white/70 sm:text-base">{description}</p>
+      <p className="mt-3 text-sm leading-6 text-white/70 sm:text-base sm:leading-7">{description}</p>
     </div>
   );
 }
@@ -297,9 +326,12 @@ export function SectionHeading({
 export function TrustBar() {
   return (
     <section className="border-y border-white/8 bg-white/[0.02]">
-      <div className="mx-auto grid max-w-7xl gap-3 px-5 py-4 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-2.5 px-5 py-3 sm:gap-3 sm:py-4 lg:grid-cols-4 lg:px-8">
         {trustBadges.map((badge) => (
-          <div key={badge} className="rounded-full border border-white/10 bg-white/5 px-4 py-3 text-center text-xs uppercase tracking-[0.18em] text-white/78">
+          <div
+            key={badge}
+            className="flex min-h-11 items-center justify-center rounded-full border border-white/10 bg-white/5 px-3 py-2 text-center text-[11px] uppercase tracking-[0.14em] text-white/78 sm:px-4 sm:py-3 sm:text-xs sm:tracking-[0.18em]"
+          >
             {badge}
           </div>
         ))}
@@ -317,17 +349,20 @@ export function ServicesGrid({
   showBenefits?: boolean;
   showQuoteButton?: boolean;
 }) {
+  const gridClass = items.length === 2 ? "mt-7 grid gap-4 md:grid-cols-2" : "mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-3";
+
   return (
-    <div className="mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+    <div className={gridClass}>
       {items.map((service) => (
-        <article key={service.title} className="glass-card flex h-full flex-col p-5">
-          <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl border border-gold-500/30 bg-gold-500/10 text-gold-300">
+        <article key={service.title} className="glass-card flex h-full flex-col p-4 sm:p-5">
+          <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-2xl border border-gold-500/30 bg-gold-500/10 text-gold-300 sm:mb-4 sm:h-11 sm:w-11">
             <ServiceIcon kind={service.icon} />
           </div>
-          <h3 className="text-lg font-medium text-white">{service.title}</h3>
-          <p className="mt-2 text-sm font-medium text-gold-300">{service.startingAt}</p>
-          <p className="mt-2 text-sm leading-7 text-white/68">{service.description}</p>
-          {showBenefits ? (
+          <h3 className="text-base font-medium text-white sm:text-lg">{service.title}</h3>
+          {service.shortLabel ? <p className="mt-2 text-xs uppercase tracking-[0.18em] text-white/55">{service.shortLabel}</p> : null}
+          <p className="mt-3 text-2xl font-semibold leading-none text-gold-300 sm:text-[1.75rem]">{service.startingAt}</p>
+          <p className="mt-2 text-sm leading-6 text-white/68 sm:leading-7">{service.description}</p>
+          {showBenefits && service.benefits.length > 0 ? (
             <div className="mt-4 space-y-2">
               {service.benefits.map((benefit) => (
                 <p key={benefit} className="flex items-start gap-3 text-sm text-white/72">
@@ -346,8 +381,8 @@ export function ServicesGrid({
 
 export function PricingDisclaimer() {
   return (
-    <p className="mt-5 max-w-4xl text-sm leading-7 text-white/60">
-      Prices are starting labor rates. Dash cam, hardwire kit, memory card, special adapters, and parts are not included unless confirmed. Final quote depends on vehicle, camera model, installation type, and wiring complexity.
+    <p className="mt-5 max-w-4xl text-sm leading-6 text-white/60 sm:leading-7">
+      Prices are labor rates and may vary depending on vehicle type, dash cam model, wiring complexity, and installation requirements. Dash cam hardware, hardwire kit, memory card, adapters, and extra parts are not included unless confirmed before booking.
     </p>
   );
 }
@@ -356,28 +391,28 @@ export function CameraOptionsSection() {
   const { openQuote } = useQuoteModal();
 
   return (
-    <section id="cameras" className="mx-auto max-w-7xl px-5 py-10 lg:px-8">
+    <section id="cameras" className="mx-auto max-w-7xl px-5 py-9 lg:px-8 lg:py-10">
       <SectionHeading
         eyebrow="Camera Guide"
         title="Choose the Right Dash Cam Setup"
         description="A compact guide to the camera style that fits your vehicle, parking needs, and budget."
       />
-      <div className="mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-7 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
         {cameraOptions.map((option) => (
-          <article key={option.title} className="glass-card p-5">
-            <h3 className="text-lg font-medium text-white">{option.title}</h3>
-            <p className="mt-2 text-sm leading-7 text-white/72">{option.audience}</p>
-            <p className="mt-2 text-sm leading-7 text-white/58">{option.summary}</p>
+          <article key={option.title} className="glass-card p-4 sm:p-5">
+            <h3 className="text-base font-medium text-white sm:text-lg">{option.title}</h3>
+            <p className="mt-2 text-sm leading-6 text-white/72">{option.audience}</p>
+            <p className="mt-1.5 text-sm leading-6 text-white/58">{option.summary}</p>
           </article>
         ))}
       </div>
-      <div className="mt-5 flex flex-col gap-4 rounded-[1.75rem] border border-gold-500/20 bg-gold-500/8 p-5 sm:flex-row sm:items-center sm:justify-between">
-        <p className="max-w-2xl text-sm leading-7 text-white/72">
+      <div className="mt-5 flex flex-col gap-4 rounded-[1.75rem] border border-gold-500/20 bg-gold-500/8 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
+        <p className="max-w-2xl text-sm leading-6 text-white/72 sm:leading-7">
           Not sure which setup to choose? Send us your vehicle details and we'll recommend the right installation style.
         </p>
         <button
           type="button"
-          className="button-primary"
+          className="button-primary w-full sm:w-auto"
           onClick={() =>
             openQuote({
               installationType: "Not Sure Yet",
@@ -395,17 +430,17 @@ export function CameraOptionsSection() {
 
 export function WhyUsSection() {
   return (
-    <section className="mx-auto max-w-7xl px-5 py-10 lg:px-8">
+    <section className="mx-auto max-w-7xl px-5 py-9 lg:px-8 lg:py-10">
       <SectionHeading
         eyebrow="Why Choose Us"
         title="A cleaner result with less guesswork"
         description="A short look at what matters most when you want a premium install without a cluttered interior."
       />
-      <div className="mt-7 grid gap-4 md:grid-cols-3">
+      <div className="mt-7 grid gap-3 md:grid-cols-3">
         {reasons.map((reason, index) => (
-          <div key={reason} className="glass-card p-5">
+          <div key={reason} className="glass-card p-4 sm:p-5">
             <p className="text-xs uppercase tracking-[0.28em] text-gold-300">0{index + 1}</p>
-            <p className="mt-3 text-base text-white">{reason}</p>
+            <p className="mt-3 text-sm leading-6 text-white sm:text-base">{reason}</p>
           </div>
         ))}
       </div>
@@ -415,7 +450,7 @@ export function WhyUsSection() {
 
 export function ProcessSection() {
   return (
-    <section className="mx-auto max-w-7xl px-5 py-10 lg:px-8">
+    <section className="mx-auto max-w-7xl px-5 py-9 lg:px-8 lg:py-10">
       <SectionHeading
         eyebrow="Simple Process"
         title="Vehicle details to drive protected"
@@ -424,7 +459,7 @@ export function ProcessSection() {
       <div className="mt-7 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         {processSteps.map((step, index) => (
           <div key={step} className="glass-card flex items-center gap-4 p-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-gold-500/30 bg-gold-500/10 text-sm font-semibold text-gold-300">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold-500/30 bg-gold-500/10 text-sm font-semibold text-gold-300">
               0{index + 1}
             </div>
             <p className="text-sm text-white/80">{step}</p>
@@ -437,14 +472,14 @@ export function ProcessSection() {
 
 export function EstimateSection() {
   return (
-    <section className="mx-auto max-w-7xl px-5 py-10 lg:px-8">
-      <div className="glass-card overflow-hidden p-6 sm:p-7">
+    <section className="mx-auto max-w-7xl px-5 py-9 lg:px-8 lg:py-10">
+      <div className="glass-card overflow-hidden p-5 sm:p-7">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="text-sm uppercase tracking-[0.35em] text-gold-300">Final Quote CTA</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-gold-300 sm:text-sm sm:tracking-[0.35em]">Final Quote CTA</p>
             <h2 className="mt-3 text-2xl font-semibold text-white">Ready for a clean dash cam install?</h2>
           </div>
-          <QuoteButton className="button-primary">Get Quote</QuoteButton>
+          <QuoteButton className="button-primary w-full sm:w-auto">Get Quote</QuoteButton>
         </div>
       </div>
     </section>
@@ -453,17 +488,17 @@ export function EstimateSection() {
 
 export function ContactCard() {
   return (
-    <div className="glass-card p-6 sm:p-7">
+    <div className="glass-card p-5 sm:p-7">
       <SectionHeading eyebrow="Contact" title={site.name} description={`Premium dash cam installation for ${site.serviceArea}.`} />
-      <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
-        <div className="space-y-2 text-white/76">
-          <p>
+      <div className="mt-6 grid gap-5 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div className="space-y-2 text-sm leading-6 text-white/76 sm:text-base sm:leading-7">
+          <p className="break-words">
             Email:{" "}
             <a className="text-gold-300 transition hover:text-gold-400" href={site.emailHref}>
               {site.emailDisplay}
             </a>
           </p>
-          <p>
+          <p className="break-words">
             Website:{" "}
             <a className="text-gold-300 transition hover:text-gold-400" href={site.websiteUrl}>
               {site.websiteLabel}
@@ -471,7 +506,7 @@ export function ContactCard() {
           </p>
           <p>Serving: {site.serviceArea}</p>
         </div>
-        <QuoteButton className="button-primary">Get Quote</QuoteButton>
+        <QuoteButton className="button-primary w-full sm:w-auto">Get Quote</QuoteButton>
       </div>
     </div>
   );
@@ -481,14 +516,14 @@ export function FaqList() {
   return (
     <div className="mt-7 grid gap-4">
       {faqs.map((faq) => (
-        <details key={faq.question} className="glass-card group p-5">
-          <summary className="cursor-pointer list-none text-base font-medium text-white marker:hidden sm:text-lg">
+        <details key={faq.question} className="glass-card group p-4 sm:p-5">
+          <summary className="cursor-pointer list-none py-1 text-base font-medium text-white marker:hidden sm:text-lg">
             <div className="flex items-center justify-between gap-4">
               <span>{faq.question}</span>
               <span className="text-gold-300 transition group-open:rotate-45">+</span>
             </div>
           </summary>
-          <p className="mt-4 max-w-3xl text-sm leading-7 text-white/72">{faq.answer}</p>
+          <p className="mt-4 max-w-3xl text-sm leading-6 text-white/72 sm:leading-7">{faq.answer}</p>
         </details>
       ))}
     </div>
@@ -507,11 +542,11 @@ export function PageHero({
   actions?: ReactNode;
 }) {
   return (
-    <section className="mx-auto max-w-7xl px-5 pb-8 pt-14 lg:px-8 lg:pb-10 lg:pt-18">
+    <section className="mx-auto max-w-7xl px-5 pb-7 pt-12 lg:px-8 lg:pb-10 lg:pt-18">
       <div className="max-w-4xl">
-        <p className="text-sm uppercase tracking-[0.4em] text-gold-300/90">{eyebrow}</p>
+        <p className="text-xs uppercase tracking-[0.28em] text-gold-300/90 sm:text-sm sm:tracking-[0.4em]">{eyebrow}</p>
         <h1 className="mt-4 text-3xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">{title}</h1>
-        <p className="mt-4 max-w-3xl text-sm leading-7 text-white/72 sm:text-lg">{description}</p>
+        <p className="mt-4 max-w-3xl text-sm leading-6 text-white/72 sm:text-lg sm:leading-7">{description}</p>
         {actions ? <div className="mt-6 flex flex-col gap-4 sm:flex-row">{actions}</div> : null}
       </div>
     </section>
@@ -526,9 +561,9 @@ export function LegalSectionList({
   return (
     <div className="mt-8 grid gap-5">
       {sections.map((section) => (
-        <section key={section.title} className="glass-card p-6 sm:p-8">
-          <h2 className="text-xl font-medium text-white">{section.title}</h2>
-          <div className="mt-4 text-sm leading-8 text-white/72">{section.body}</div>
+        <section key={section.title} className="glass-card p-5 sm:p-8">
+          <h2 className="text-lg font-medium text-white sm:text-xl">{section.title}</h2>
+          <div className="mt-4 text-sm leading-7 text-white/72 sm:leading-8">{section.body}</div>
         </section>
       ))}
     </div>
@@ -542,7 +577,7 @@ export function LegalContactNote() {
       <a className="text-gold-300 transition hover:text-gold-400" href={site.emailHref}>
         {site.emailDisplay}
       </a>
-      {" · "}
+      {" | "}
       <a className="text-gold-300 transition hover:text-gold-400" href={site.websiteUrl}>
         {site.websiteLabel}
       </a>
@@ -552,8 +587,8 @@ export function LegalContactNote() {
 
 export function HomeHeroVisual() {
   return (
-    <div className="relative flex items-center justify-center">
-      <div className="absolute inset-auto top-4 h-32 w-32 rounded-full bg-gold-500/10 blur-3xl" />
+    <div className="relative mt-1 flex items-center justify-center sm:mt-2">
+      <div className="absolute inset-auto top-3 h-28 w-28 rounded-full bg-gold-500/10 blur-3xl sm:top-4 sm:h-32 sm:w-32" />
       <div className="w-full max-w-[26rem]">
         <div className="glass-card border-gold-500/10 p-3.5 shadow-glow sm:p-[18px]">
           <div className="grid gap-3 sm:grid-cols-1">
@@ -589,14 +624,14 @@ function HeroInfoCard({
   icon: ReactNode;
 }) {
   return (
-    <div className="min-h-[108px] rounded-[1.45rem] border border-white/10 bg-[linear-gradient(160deg,rgba(255,255,255,0.04),rgba(255,255,255,0.015)_45%,rgba(185,144,45,0.04)_100%)] p-4">
-      <div className="flex items-start gap-4">
-        <div className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-gold-500/30 bg-gold-500/10 text-gold-300">
+    <div className="min-h-[96px] rounded-[1.45rem] border border-white/10 bg-[linear-gradient(160deg,rgba(255,255,255,0.04),rgba(255,255,255,0.015)_45%,rgba(185,144,45,0.04)_100%)] p-3.5 sm:min-h-[108px] sm:p-4">
+      <div className="flex items-start gap-3.5 sm:gap-4">
+        <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-gold-500/30 bg-gold-500/10 text-gold-300 sm:h-11 sm:w-11">
           {icon}
         </div>
         <div className="flex min-h-[44px] flex-col justify-center">
           <p className="text-[10px] uppercase tracking-[0.28em] text-gold-300">{title}</p>
-          <p className="mt-2 text-sm leading-6 text-white/68">{body}</p>
+          <p className="mt-2 text-sm leading-5 text-white/68 sm:leading-6">{body}</p>
         </div>
       </div>
     </div>
@@ -666,6 +701,9 @@ function QuoteModal({
       return undefined;
     }
 
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         onClose();
@@ -673,7 +711,10 @@ function QuoteModal({
     };
 
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
   }, [isOpen, onClose]);
 
   if (!isOpen) {
@@ -725,17 +766,21 @@ function QuoteModal({
   };
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 px-4 py-6 backdrop-blur-sm">
-      <div className="glass-card max-h-[90vh] w-full max-w-3xl overflow-y-auto p-6 sm:p-8">
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <p className="text-sm uppercase tracking-[0.35em] text-gold-300">Get Quote</p>
-            <h2 className="mt-3 text-2xl font-semibold text-white">Get a Dash Cam Installation Quote</h2>
-            <p className="mt-3 text-sm leading-7 text-white/70">
+    <div className="fixed inset-0 z-[60] flex items-end justify-center bg-black/70 px-3 py-3 backdrop-blur-sm sm:items-center sm:px-4 sm:py-6">
+      <div className="glass-card max-h-[calc(100vh-0.75rem)] w-full max-w-3xl overflow-y-auto rounded-[1.5rem] p-4 sm:max-h-[90vh] sm:p-8">
+        <div className="sticky top-0 z-10 -mx-4 -mt-4 mb-5 flex items-start justify-between gap-4 border-b border-white/10 bg-[#0b0b0c]/95 px-4 py-4 backdrop-blur-sm sm:static sm:m-0 sm:mb-0 sm:border-b-0 sm:bg-transparent sm:p-0">
+          <div className="pr-2">
+            <p className="text-xs uppercase tracking-[0.28em] text-gold-300 sm:text-sm sm:tracking-[0.35em]">Get Quote</p>
+            <h2 className="mt-2 text-xl font-semibold text-white sm:mt-3 sm:text-2xl">Get a Dash Cam Installation Quote</h2>
+            <p className="mt-2 text-sm leading-6 text-white/70 sm:mt-3 sm:leading-7">
               Fill out the details below and we will open WhatsApp with a clean quote request message.
             </p>
           </div>
-          <button type="button" className="rounded-full border border-white/10 px-3 py-2 text-white/70 transition hover:text-gold-300" onClick={onClose}>
+          <button
+            type="button"
+            className="min-h-11 shrink-0 rounded-full border border-white/10 px-3 py-2 text-white/70 transition hover:text-gold-300"
+            onClick={onClose}
+          >
             Close
           </button>
         </div>
@@ -748,7 +793,7 @@ function QuoteModal({
           </div>
         ) : null}
 
-        <form className="mt-6 grid gap-4 sm:grid-cols-2" onSubmit={onSubmit}>
+        <form className="mt-1 grid gap-4 sm:mt-6 sm:grid-cols-2" onSubmit={onSubmit}>
           <Field label="Full Name" required>
             <input className="input-field" value={form.fullName} onChange={onChange("fullName")} />
           </Field>
@@ -772,10 +817,8 @@ function QuoteModal({
           </Field>
           <Field label="Installation Type">
             <select className="input-field" value={form.installationType} onChange={onChange("installationType")}>
-              <option>Front Camera Only</option>
-              <option>Front + Rear Camera</option>
-              <option>Hardwire Installation</option>
-              <option>Parking Mode Setup</option>
+              <option>Front Dash Cam Install — Cigarette Lighter Socket — $149</option>
+              <option>Front + Rear Install + Hardwire + Parking Mode — Hardwire Kit Install — $200</option>
               <option>Not Sure Yet</option>
             </select>
           </Field>
@@ -813,10 +856,10 @@ function QuoteModal({
             {" as a fallback after sending your quote request on WhatsApp."}
           </div>
           <div className="flex flex-col gap-3 pt-2 sm:col-span-2 sm:flex-row">
-            <button type="submit" className="button-primary">
+            <button type="submit" className="button-primary w-full sm:w-auto">
               Send by WhatsApp
             </button>
-            <a className="button-secondary" href={site.smsHref}>
+            <a className="button-secondary w-full sm:w-auto" href={site.smsHref}>
               Send by SMS
             </a>
           </div>
