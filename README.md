@@ -11,7 +11,7 @@ Included routes:
 - `/privacy-policy`
 - `/terms-and-conditions`
 - `/refund-cancellation-policy`
-- `/cookie-policy` 
+- `/cookie-policy`
 - `/disclaimer`
 
 ## Local WSL2
