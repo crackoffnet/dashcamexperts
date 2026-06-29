@@ -15,9 +15,11 @@ import {
   navLinks,
   processSteps,
   reasons,
+  serviceCapabilities,
   site,
   trustBadges,
   type QuotePrefill,
+  type ServiceCapability,
   type ServiceIconKind,
   type ServiceItem
 } from "./siteData";
@@ -30,7 +32,7 @@ const quoteDefaults = {
   vehicleMake: "",
   vehicleModel: "",
   dashCamModel: "",
-  installationType: "Front Dash Cam Install — Cigarette Lighter Socket — $149",
+  installationType: "Front Dash Cam Install - Cigarette Lighter Socket - $149",
   hasDashcam: "Yes",
   preferredInstallation: "Mobile installation",
   preferredDate: "",
@@ -384,6 +386,23 @@ export function PricingDisclaimer() {
     <p className="mt-5 max-w-4xl text-sm leading-6 text-white/60 sm:leading-7">
       Prices are labor rates and may vary depending on vehicle type, dash cam model, wiring complexity, and installation requirements. Dash cam hardware, hardwire kit, memory card, adapters, and extra parts are not included unless confirmed before booking.
     </p>
+  );
+}
+
+export function ServiceCapabilitiesSection() {
+  return (
+    <div className="mt-8">
+      <SectionHeading
+        eyebrow="Also Available"
+        title="Installation Services Included & Available"
+        description="Additional capabilities that can be included, supported, or discussed during your quote without being separate priced packages."
+      />
+      <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+        {serviceCapabilities.map((capability) => (
+          <ServiceCapabilityCard key={capability.title} capability={capability} />
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -817,8 +836,8 @@ function QuoteModal({
           </Field>
           <Field label="Installation Type">
             <select className="input-field" value={form.installationType} onChange={onChange("installationType")}>
-              <option>Front Dash Cam Install — Cigarette Lighter Socket — $149</option>
-              <option>Front + Rear Install + Hardwire + Parking Mode — Hardwire Kit Install — $200</option>
+              <option>Front Dash Cam Install - Cigarette Lighter Socket - $149</option>
+              <option>Front + Rear Install + Hardwire + Parking Mode - Hardwire Kit Install - $200</option>
               <option>Not Sure Yet</option>
             </select>
           </Field>
@@ -886,6 +905,18 @@ function Field({
       </span>
       {children}
     </label>
+  );
+}
+
+function ServiceCapabilityCard({ capability }: { capability: ServiceCapability }) {
+  return (
+    <article className="glass-card p-4 sm:p-5">
+      <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-2xl border border-gold-500/30 bg-gold-500/10 text-gold-300 sm:h-11 sm:w-11">
+        <ServiceIcon kind={capability.icon} />
+      </div>
+      <h3 className="text-base font-medium text-white sm:text-lg">{capability.title}</h3>
+      <p className="mt-2 text-sm leading-6 text-white/68 sm:leading-7">{capability.description}</p>
+    </article>
   );
 }
 

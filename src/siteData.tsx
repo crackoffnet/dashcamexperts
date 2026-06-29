@@ -57,6 +57,12 @@ export type CameraOption = {
   summary: string;
 };
 
+export type ServiceCapability = {
+  icon: ServiceIconKind;
+  title: string;
+  description: string;
+};
+
 export type QuotePrefill = {
   installationType?: string;
   hasDashcam?: string;
@@ -85,6 +91,39 @@ export const compactServices: ServiceItem[] = [
 ];
 
 export const fullServices: ServiceItem[] = compactServices;
+
+export const serviceCapabilities: ServiceCapability[] = [
+  {
+    icon: "route",
+    title: "Hidden Wire Routing",
+    description: "Clean wire routing through trim/headliner where possible for a factory-style look."
+  },
+  {
+    icon: "cleanup",
+    title: "Cable Cleanup",
+    description: "Remove visible cable clutter and improve the appearance of an existing setup."
+  },
+  {
+    icon: "mobile",
+    title: "Mobile Installation",
+    description: "Installation available in LA & nearby areas depending on schedule and location."
+  },
+  {
+    icon: "upgrade",
+    title: "Camera Replacement / Upgrade",
+    description: "Replace an old dash cam or upgrade to a cleaner front/rear setup."
+  },
+  {
+    icon: "parking",
+    title: "Parking Mode Configuration",
+    description: "Setup support for compatible dash cams when using hardwire installation."
+  },
+  {
+    icon: "front",
+    title: "Camera Recommendation",
+    description: "Help choosing the right dash cam style for your vehicle and budget."
+  }
+];
 
 export const cameraOptions: CameraOption[] = [
   {

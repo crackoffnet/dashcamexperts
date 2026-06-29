@@ -12,6 +12,7 @@ import {
   ProcessSection,
   QuoteButton,
   SectionHeading,
+  ServiceCapabilitiesSection,
   ServicesGrid,
   TrustBar,
   WhyUsSection
@@ -54,6 +55,7 @@ export function HomePage() {
           description="Choose the service that fits your vehicle now, then use the quote form for a more exact review."
         />
         <ServicesGrid items={compactServices} />
+        <ServiceCapabilitiesSection />
         <PricingDisclaimer />
         <div className="mt-6">
           <QuoteButton className="button-primary w-full sm:w-auto">Get Quote</QuoteButton>
@@ -93,6 +95,7 @@ export function ServicesPage() {
       />
       <section className="mx-auto max-w-7xl px-5 pb-12 lg:px-8 lg:pb-16">
         <ServicesGrid items={fullServices} showBenefits />
+        <ServiceCapabilitiesSection />
         <PricingDisclaimer />
       </section>
     </PageShell>
