@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #080808;
+  color: #ffffff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@layer components {
+  .button-primary {
+    @apply inline-flex items-center justify-center rounded-full border border-gold-400/60 bg-gold-500 px-6 py-3 text-sm font-semibold text-black transition duration-300 hover:border-gold-300 hover:bg-gold-400;
+  }
+
+  .button-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:border-gold-400/45 hover:text-gold-300;
+  }
+
+  .glass-card {
+    @apply rounded-[1.75rem] border border-white/10 bg-white/[0.04] backdrop-blur-sm;
+  }
+
+  .input-field {
+    @apply rounded-2xl border border-white/10 bg-black/35 px-4 py-3 text-white outline-none transition placeholder:text-white/30 focus:border-gold-400/45;
+  }
+}
