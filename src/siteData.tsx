@@ -84,7 +84,7 @@ export const compactServices: ServiceItem[] = [
     icon: "power",
     title: "Front + Rear Install + Hardwire + Parking Mode",
     shortLabel: "Hardwire kit install",
-    startingAt: "Starting at $250",
+    startingAt: "Starting at $200",
     description: "Front and rear dash cam installation with hardwire kit setup and parking mode configuration for compatible cameras.",
     benefits: []
   }

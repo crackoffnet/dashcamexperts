@@ -840,7 +840,7 @@ function QuoteModal({
           <Field label="Installation Type">
             <select className="input-field" value={form.installationType} onChange={onChange("installationType")}>
               <option>Front Dash Cam Install - Cigarette Lighter Socket - Starting at $160</option>
-              <option>Front + Rear Install + Hardwire + Parking Mode - Starting at $250</option>
+              <option>Front + Rear Install + Hardwire + Parking Mode - Starting at $200</option>
               <option>Not Sure Yet</option>
             </select>
           </Field>
